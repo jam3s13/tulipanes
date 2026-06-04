@@ -11,6 +11,8 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
+    /* Evita el highlight azul en móviles al tocar botones */
+    -webkit-tap-highlight-color: transparent; 
 }
 
 body {
@@ -18,6 +20,9 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #fcfcfc;
     transition: background-color 1.5s ease;
+    /* Usamos dvh (dynamic viewport height) para ignorar la barra de Chrome/Safari en móviles */
+    height: 100dvh; 
+    width: 100vw;
 }
 
 body:not(.not-loaded) { 
@@ -30,7 +35,8 @@ body:not(.not-loaded) {
 .pantalla {
     position: absolute;
     top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    width: 100vw; 
+    height: 100%; /* Se adapta al body */
     display: flex;
     justify-content: center; align-items: center;
     transition: opacity 1s ease;
@@ -46,10 +52,10 @@ body:not(.not-loaded) {
 /* Aplicamos el fondo mágico a ambas pantallas de inicio */
 #pantalla-clave, #pantalla-1 {
     background-image: url('tulip_bokeh_bg.jpg'); 
-    background-size: auto;
-    background-position: center;
+    /* ¡CORRECCIÓN CRÍTICA PARA MÓVILES! cover evita espacios blancos */
+    background-size: cover; 
+    background-position: center bottom; /* Enfoca la parte bonita abajo */
     background-repeat: no-repeat;
-
 }
 
 /* Le damos mayor prioridad a la pantalla de clave al inicio */
@@ -60,7 +66,6 @@ body:not(.not-loaded) {
 /* =======================================================
    3. EFECTO CRISTAL Y TARJETAS (UI)
    ======================================================= */
-/* Efecto Glassmorphism unificado para ambas tarjetas */
 .glass-effect, .tarjeta, .tarjeta-clave {
     background: rgba(255, 255, 255, 0.2);
     -webkit-backdrop-filter: blur(10px);
@@ -69,12 +74,12 @@ body:not(.not-loaded) {
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
 }
 
-/* Tamaños específicos de cada tarjeta */
 .tarjeta-clave {
     padding: 35px;
     border-radius: 20px;
     text-align: center;
-    width: 280px;
+    width: 90%; /* Ajuste móvil */
+    max-width: 320px;
 }
 
 .tarjeta {
@@ -83,11 +88,9 @@ body:not(.not-loaded) {
     text-align: center; 
     width: 90%; 
     max-width: 350px;
-    /* 👇 ESTA ES LA LÍNEA MÁGICA QUE AÑADIMOS 👇 */
     animation: respirar 4s infinite ease-in-out; 
 }
 
-/* Textos de las tarjetas unificados a color blanco para resaltar en el cristal */
 .tarjeta-clave h2, .tarjeta h2 { 
     color: #e9e9e9; 
     margin-bottom: 25px; 
@@ -97,14 +100,13 @@ body:not(.not-loaded) {
 .tarjeta-clave h2 { font-size: 38px; }
 .tarjeta h2 { font-size: 35px; }
 
-/* Estilo para la pista/acertijo */
 .acertijo {
-    color: #f8f9fa; /* Blanco suave */
+    color: #f8f9fa;
     font-size: 16px;
-    font-style: italic; /* Letra cursiva para darle toque romántico */
+    font-style: italic; 
     margin-bottom: 20px;
     line-height: 1.4;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombrita para que se lea perfecto sobre cualquier fondo */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
 }
 
 .imagen-pareja { 
@@ -127,6 +129,7 @@ body:not(.not-loaded) {
     font-size: 22px;
     letter-spacing: 6px;
     color: #333;
+    outline: none; /* Quita el borde azul molesto al escribir */
 }
 
 #btn-acceder {
@@ -143,7 +146,7 @@ body:not(.not-loaded) {
 
 #btn-toca {
     background: var(--rosa-principal); 
-    color: #fff; /* Cambiado a blanco para que se lea mejor en el cristal */
+    color: #fff; 
     border: 2px solid var(--rosa-principal);
     padding: 12px 30px; 
     font-size: 18px; 
@@ -156,12 +159,11 @@ body:not(.not-loaded) {
 
 #btn-acceder:hover, #btn-toca:hover {
     background: var(--rosa-principal);
-    color: white;
     transform: scale(1.05);
 }
 
 /* =======================================================
-   5. PANTALLA 2 (LA MAGIA / DEDICATORIA Y LUCIÉRNAGAS)
+   5. PANTALLA 2 (LA MAGIA / DEDICATORIA)
    ======================================================= */
 .contenedor-texto { 
     position: absolute; 
@@ -174,7 +176,7 @@ body:not(.not-loaded) {
 #texto-dedicatoria {
     color: #ffd1dc; 
     font-family: 'Great Vibes', cursive; 
-    font-size: 36px; 
+    font-size: 32px; /* Ligeramente más pequeño para que entre bien en celulares */
     text-shadow: 0 0 15px rgba(255, 143, 163, 0.6); 
     min-height: 100px; 
     line-height: 1.2;
@@ -203,7 +205,9 @@ body:not(.not-loaded) {
 .contenedor-ramo {
     position: absolute;
     bottom: -100%; 
-    width: 350px; height: 550px;
+    width: 100%; /* Corrección para celulares: ocupa 100% pero máximo 350px */
+    max-width: 350px; 
+    height: 550px;
     display: flex; justify-content: center; align-items: flex-end;
     transition: bottom 2s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 3;
@@ -218,7 +222,8 @@ body:not(.not-loaded) {
     position: absolute;
     bottom: -50px;
     left: 50%; 
-    width: 300px;
+    width: 90%; /* Ajuste móvil */
+    max-width: 300px;
     z-index: 1;
     opacity: 0;
     transform: translateX(-50%) scale(0.9);
@@ -272,17 +277,8 @@ body:not(.not-loaded) {
     z-index: 1; 
 }
 
-.h-izq { 
-    left: -35px; 
-    border-radius: 0% 100% 0% 100%; 
-    transform: rotate(-40deg) scale(0); 
-}
-
-.h-der { 
-    right: -75px; 
-    border-radius: 0% 100% 0% 100%; 
-    transform: rotate(40deg) scale(0); 
-}
+.h-izq { left: -35px; border-radius: 0% 100% 0% 100%; transform: rotate(-40deg) scale(0); }
+.h-der { right: -75px; border-radius: 0% 100% 0% 100%; transform: rotate(40deg) scale(0); }
 
 .flor { 
     position: relative; width: 55px; height: 70px; bottom: -10px; transform: scale(0); transition: transform 1.5s ease; 
@@ -299,9 +295,8 @@ body:not(.not-loaded) {
 .p-der { width: 35px; height: 60px; right: -5px; transform: rotate(25deg); z-index: 2; box-shadow: inset 5px -5px 15px rgba(0,0,0,0.4); }
 
 /* =======================================================
-   8. DISTRIBUCIÓN DE LOS TULIPANES
+   8. DISTRIBUCIÓN DE LOS TULIPANES (Posiciones estáticas)
    ======================================================= */
-/* Principales */
 .t-izq-ext { transform: translateX(0px) translateY(15px) rotate(-20deg) scale(0.85); z-index: 1; filter: brightness(0.85); }
 .t-izq-int { transform: translateX(0px) translateY(-5px) rotate(-10deg) scale(0.95); z-index: 3; filter: brightness(0.95); }
 .t-cen-alto { transform: translateX(0px) translateY(-35px) rotate(0deg) scale(0.95); z-index: 4; filter: brightness(0.9); }
@@ -310,13 +305,12 @@ body:not(.not-loaded) {
 .t-der-ext { transform: translateX(0px) translateY(15px) rotate(20deg) scale(0.85); z-index: 2; filter: brightness(0.85); }
 .t-der-muy-ext { transform: translateX(10px) translateY(35px) rotate(5deg) scale(0.8); z-index: 1; filter: brightness(0.7); }
 
-/* Relleno (Extras) */
 .t-extra-1 { transform: translateX(0px) translateY(10px) rotate(-10deg) scale(0.75); z-index: 5; filter: brightness(0.65); }
 .t-extra-2 { transform: translateX(0px) translateY(10px) rotate(10deg) scale(0.75); z-index: 3; filter: brightness(0.65); }
 .t-extra-3 { transform: translateX(0px) translateY(25px) rotate(0deg) scale(0.7); z-index: 3; filter: brightness(0.8); }
 
 /* =======================================================
-   9. ANIMACIONES ACTIVAS (USADAS POR JAVASCRIPT)
+   9. ANIMACIONES ACTIVAS (JS)
    ======================================================= */
 .crecer-tallo { height: 260px; }
 .crecer-flor { transform: scale(1); }
@@ -328,13 +322,75 @@ body:not(.not-loaded) {
     33% { transform: translateY(-50px) translateX(30px); }
     66% { transform: translateY(20px) translateX(-40px); }
 }
-
 @keyframes parpadear {
     0%, 100% { opacity: 0; transform: scale(0.5); }
     50% { opacity: 1; transform: scale(1.2); }
 }
-
 @keyframes respirar {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.05); } 
+}
+
+/* =======================================================
+   10. BOTÓN EXTRA Y MODAL (SORPRESA FINAL)
+   ======================================================= */
+#btn-sorpresa {
+    position: absolute;
+    bottom: 5vh; /* Ajuste para evitar la barra de safari/chrome abajo */
+    z-index: 20;
+    background: rgba(255, 77, 133, 0.2);
+    color: white;
+    border: 2px solid var(--rosa-principal);
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    opacity: 0; 
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(255, 77, 133, 0.4);
+}
+
+#btn-sorpresa.mostrar-btn {
+    opacity: 1;
+    pointer-events: auto;
+    animation: respirar 3s infinite ease-in-out;
+}
+
+/* Modal / Ventana flotante */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100dvh; /* dvh asegura que tape todo el celular */
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.modal.mostrar-modal { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+.tarjeta-modal {
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    max-width: 320px;
+    position: relative;
+}
+
+.tarjeta-modal h3 {
+    color: white; font-family: 'Great Vibes', cursive;
+    font-size: 32px; margin-top: 15px;
+}
+
+#cerrar-modal {
+    position: absolute; top: 10px; right: 20px;
+    color: white; font-size: 30px;
+    cursor: pointer; font-weight: bold;
 }

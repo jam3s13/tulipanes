@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Para Ti</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -17,14 +17,16 @@
             <p class="acertijo">"El año en que nuestra historia comenzó fue en el..."</p>
             <input type="password" id="input-clave" maxlength="4" placeholder="••••">
             <button id="btn-acceder">Entrar</button>
-            <p id="error-clave" style="color: #ffb3c6; display: none; margin-top: 15px; font-weight: bold;">Esa no es la
-                fecha correcta, mi amor.</p>
+            <p id="error-clave" style="color: #ffb3c6; display: none; margin-top: 15px; font-weight: bold;">
+                Esa no es la fecha correcta, mi amor.
+            </p>
         </div>
     </div>
 
     <audio id="musica" src="cancion.mp3" loop></audio>
+
     <div id="pantalla-1" class="pantalla">
-        <div class="tarjeta">
+        <div class="tarjeta glass-effect">
             <img src="1.gif" alt="Nosotros" class="imagen-pareja">
             <h2>¡Para lessli Valentin!</h2>
             <button id="btn-toca">Toca Aquí</button>
@@ -39,115 +41,31 @@
         </div>
 
         <div class="contenedor-ramo">
-
             <div class="tulipanes-grupo">
-                <div class="tulipan-item t-izq-ext">
-                    <div class="tallo">
-                        <div class="hoja h-izq"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-izq-int">
-                    <div class="tallo">
-                        <div class="hoja h-der"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-cen-alto">
-                    <div class="tallo">
-                        <div class="hoja h-izq"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-cen-bajo">
-                    <div class="tallo">
-                        <div class="hoja h-izq"></div>
-                        <div class="hoja h-der"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-der-int">
-                    <div class="tallo">
-                        <div class="hoja h-izq"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-der-ext">
-                    <div class="tallo">
-                        <div class="hoja h-der"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-der-muy-ext">
-                    <div class="tallo">
-                        <div class="hoja h-der"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
+                <div class="tulipan-item t-izq-ext"><div class="tallo"><div class="hoja h-izq"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-izq-int"><div class="tallo"><div class="hoja h-der"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-cen-alto"><div class="tallo"><div class="hoja h-izq"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-cen-bajo"><div class="tallo"><div class="hoja h-izq"></div><div class="hoja h-der"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-der-int"><div class="tallo"><div class="hoja h-izq"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-der-ext"><div class="tallo"><div class="hoja h-der"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-der-muy-ext"><div class="tallo"><div class="hoja h-der"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
 
-                <div class="tulipan-item t-extra-1">
-                    <div class="tallo">
-                        <div class="hoja h-izq"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-extra-2">
-                    <div class="tallo">
-                        <div class="hoja h-der"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-                <div class="tulipan-item t-extra-3">
-                    <div class="tallo">
-                        <div class="hoja h-izq"></div>
-                    </div>
-                    <div class="flor">
-                        <div class="petalo p-izq"></div>
-                        <div class="petalo p-cen"></div>
-                        <div class="petalo p-der"></div>
-                    </div>
-                </div>
-
+                <div class="tulipan-item t-extra-1"><div class="tallo"><div class="hoja h-izq"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-extra-2"><div class="tallo"><div class="hoja h-der"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
+                <div class="tulipan-item t-extra-3"><div class="tallo"><div class="hoja h-izq"></div></div><div class="flor"><div class="petalo p-izq"></div><div class="petalo p-cen"></div><div class="petalo p-der"></div></div></div>
             </div>
 
             <img src="envoltura.png" alt="Envoltura Dorada" class="imagen-envoltura">
+        </div>
 
+        <button id="btn-sorpresa">Un último detalle 💖</button>
+
+        <div id="modal-sorpresa" class="modal">
+            <div class="tarjeta-modal glass-effect">
+                <span id="cerrar-modal">&times;</span>
+                <img src="pareja_3d.png" alt="Nosotros 3D" class="imagen-pareja">
+                <h3>Siempre juntos</h3>
+            </div>
         </div>
     </div>
 
