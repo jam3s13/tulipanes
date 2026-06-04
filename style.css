@@ -1,0 +1,340 @@
+/* =======================================================
+   1. VARIABLES Y RESET GENERAL
+   ======================================================= */
+:root {
+    --rosa-principal: #ff4d85;
+    --rosa-claro: #ff8fa3;
+    --fondo-oscuro: #080c13;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background-color: #fcfcfc;
+    transition: background-color 1.5s ease;
+}
+
+body:not(.not-loaded) { 
+    background-color: var(--fondo-oscuro); 
+}
+
+/* =======================================================
+   2. CONFIGURACIÓN DE PANTALLAS Y FONDOS
+   ======================================================= */
+.pantalla {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    justify-content: center; align-items: center;
+    transition: opacity 1s ease;
+    opacity: 0; pointer-events: none;
+}
+
+.pantalla.active { 
+    opacity: 1; 
+    pointer-events: auto; 
+    z-index: 10; 
+}
+
+/* Aplicamos el fondo mágico a ambas pantallas de inicio */
+#pantalla-clave, #pantalla-1 {
+    background-image: url('tulip_bokeh_bg.jpg'); 
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+/* Le damos mayor prioridad a la pantalla de clave al inicio */
+#pantalla-clave.active { 
+    z-index: 20; 
+}
+
+/* =======================================================
+   3. EFECTO CRISTAL Y TARJETAS (UI)
+   ======================================================= */
+/* Efecto Glassmorphism unificado para ambas tarjetas */
+.glass-effect, .tarjeta, .tarjeta-clave {
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+/* Tamaños específicos de cada tarjeta */
+.tarjeta-clave {
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    width: 280px;
+}
+
+.tarjeta {
+    padding: 30px; 
+    border-radius: 20px;
+    text-align: center; 
+    width: 90%; 
+    max-width: 350px;
+    /* 👇 ESTA ES LA LÍNEA MÁGICA QUE AÑADIMOS 👇 */
+    animation: respirar 4s infinite ease-in-out; 
+}
+
+/* Textos de las tarjetas unificados a color blanco para resaltar en el cristal */
+.tarjeta-clave h2, .tarjeta h2 { 
+    color: #e9e9e9; 
+    margin-bottom: 25px; 
+    font-family: 'Great Vibes', cursive; 
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.tarjeta-clave h2 { font-size: 38px; }
+.tarjeta h2 { font-size: 35px; }
+
+/* Estilo para la pista/acertijo */
+.acertijo {
+    color: #f8f9fa; /* Blanco suave */
+    font-size: 16px;
+    font-style: italic; /* Letra cursiva para darle toque romántico */
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombrita para que se lea perfecto sobre cualquier fondo */
+}
+
+.imagen-pareja { 
+    width: 100%; 
+    border-radius: 10px; 
+    margin-bottom: 20px; 
+}
+
+/* =======================================================
+   4. INPUTS Y BOTONES
+   ======================================================= */
+#input-clave {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.7); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: #333;
+}
+
+#btn-acceder {
+    background: var(--rosa-principal); 
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#btn-toca {
+    background: var(--rosa-principal); 
+    color: #fff; /* Cambiado a blanco para que se lea mejor en el cristal */
+    border: 2px solid var(--rosa-principal);
+    padding: 12px 30px; 
+    font-size: 18px; 
+    border-radius: 30px; 
+    cursor: pointer; 
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 77, 133, 0.4);
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#btn-acceder:hover, #btn-toca:hover {
+    background: var(--rosa-principal);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* =======================================================
+   5. PANTALLA 2 (LA MAGIA / DEDICATORIA Y LUCIÉRNAGAS)
+   ======================================================= */
+.contenedor-texto { 
+    position: absolute; 
+    top: 4%; 
+    width: 90%; 
+    text-align: center; 
+    z-index: 5; 
+}
+
+#texto-dedicatoria {
+    color: #ffd1dc; 
+    font-family: 'Great Vibes', cursive; 
+    font-size: 36px; 
+    text-shadow: 0 0 15px rgba(255, 143, 163, 0.6); 
+    min-height: 100px; 
+    line-height: 1.2;
+}
+
+#luciernagas { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+.luciernaga {
+    position: absolute;
+    width: 4px; height: 4px;
+    background-color: #e2fca4;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 3px #a1ff0080, 0 0 20px 5px #ffeb3b4d;
+    animation: flotar 1s infinite ease-in-out, parpadear 0.01s infinite ease-in-out;
+}
+
+/* =======================================================
+   6. CONTENEDOR DEL RAMO Y ENVOLTURA
+   ======================================================= */
+.contenedor-ramo {
+    position: absolute;
+    bottom: -100%; 
+    width: 350px; height: 550px;
+    display: flex; justify-content: center; align-items: flex-end;
+    transition: bottom 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 3;
+}
+
+.contenedor-ramo.subir { 
+    bottom: 5vh; 
+    animation: respirar 3s infinite ease-in-out;
+}
+
+.imagen-envoltura {
+    position: absolute;
+    bottom: -50px;
+    left: 50%; 
+    width: 300px;
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+    transition: all 2s ease;
+    pointer-events: none;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+}
+
+.mostrar-envoltura { 
+    opacity: 1 !important; 
+    transform: translateX(-50%) scale(1); 
+}
+
+/* =======================================================
+   7. ANATOMÍA DE LAS FLORES (TALLOS, HOJAS, PÉTALOS)
+   ======================================================= */
+.tulipanes-grupo {
+    position: absolute;
+    bottom: 120px; 
+    z-index: 10; 
+    width: 100%; height: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 97%);
+}
+
+.tulipan-item {
+    position: absolute; 
+    bottom: 0; left: 50%;
+    margin-left: -27.5px; 
+    display: flex; flex-direction: column-reverse; align-items: center;
+    transform-origin: bottom center;
+}
+
+.tallo {
+    position: relative; width: 9px;
+    background: linear-gradient(to right, #1b4326, #40916c, #1b4326);
+    border-radius: 4px; height: 0;
+    transition: height 2s ease-out;
+}
+
+.hoja {
+    position: absolute; 
+    bottom: 180px; 
+    width: 40px; height: 60px;
+    background: linear-gradient(to top right, #133a20, #52b788);
+    border-radius: 100% 0% 100% 0%;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
+    opacity: 0; 
+    transform-origin: bottom center; 
+    transition: all 1.5s ease;
+    z-index: 1; 
+}
+
+.h-izq { 
+    left: -35px; 
+    border-radius: 0% 100% 0% 100%; 
+    transform: rotate(-40deg) scale(0); 
+}
+
+.h-der { 
+    right: -75px; 
+    border-radius: 0% 100% 0% 100%; 
+    transform: rotate(40deg) scale(0); 
+}
+
+.flor { 
+    position: relative; width: 55px; height: 70px; bottom: -10px; transform: scale(0); transition: transform 1.5s ease; 
+}
+
+.petalo {
+    position: absolute; bottom: 0;
+    background: linear-gradient(to bottom, #ff9eb5 0%, #ff3366 40%, #800020 100%);
+    border-radius: 50% 50% 25% 25% / 60% 60% 40% 40%;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.5), 0 5px 10px rgba(0,0,0,0.2);
+}
+.p-cen { width: 40px; height: 65px; left: 7.5px; z-index: 3; }
+.p-izq { width: 35px; height: 60px; left: -5px; transform: rotate(-25deg); z-index: 2; box-shadow: inset -5px -5px 15px rgba(0,0,0,0.4); }
+.p-der { width: 35px; height: 60px; right: -5px; transform: rotate(25deg); z-index: 2; box-shadow: inset 5px -5px 15px rgba(0,0,0,0.4); }
+
+/* =======================================================
+   8. DISTRIBUCIÓN DE LOS TULIPANES
+   ======================================================= */
+/* Principales */
+.t-izq-ext { transform: translateX(0px) translateY(15px) rotate(-20deg) scale(0.85); z-index: 1; filter: brightness(0.85); }
+.t-izq-int { transform: translateX(0px) translateY(-5px) rotate(-10deg) scale(0.95); z-index: 3; filter: brightness(0.95); }
+.t-cen-alto { transform: translateX(0px) translateY(-35px) rotate(0deg) scale(0.95); z-index: 4; filter: brightness(0.9); }
+.t-cen-bajo { transform: translateX(0px) translateY(20px) rotate(0deg) scale(1.05); z-index: 5; }
+.t-der-int { transform: translateX(0px) translateY(-5px) rotate(10deg) scale(0.95); z-index: 3; filter: brightness(0.95); }
+.t-der-ext { transform: translateX(0px) translateY(15px) rotate(20deg) scale(0.85); z-index: 2; filter: brightness(0.85); }
+.t-der-muy-ext { transform: translateX(10px) translateY(35px) rotate(5deg) scale(0.8); z-index: 1; filter: brightness(0.7); }
+
+/* Relleno (Extras) */
+.t-extra-1 { transform: translateX(0px) translateY(10px) rotate(-10deg) scale(0.75); z-index: 5; filter: brightness(0.65); }
+.t-extra-2 { transform: translateX(0px) translateY(10px) rotate(10deg) scale(0.75); z-index: 3; filter: brightness(0.65); }
+.t-extra-3 { transform: translateX(0px) translateY(25px) rotate(0deg) scale(0.7); z-index: 3; filter: brightness(0.8); }
+
+/* =======================================================
+   9. ANIMACIONES ACTIVAS (USADAS POR JAVASCRIPT)
+   ======================================================= */
+.crecer-tallo { height: 260px; }
+.crecer-flor { transform: scale(1); }
+.h-izq.crecer-hoja { transform: rotate(-25deg) scale(1) !important; opacity: 1; }
+.h-der.crecer-hoja { transform: rotate(-100deg) scale(1) !important; opacity: 1; }
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-50px) translateX(30px); }
+    66% { transform: translateY(20px) translateX(-40px); }
+}
+
+@keyframes parpadear {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes respirar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); } 
+}

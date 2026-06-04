@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+
+<body class="not-loaded">
+
+    <div id="pantalla-clave" class="pantalla active">
+        <div class="tarjeta-clave glass-effect">
+            <h2>Ingresa la clave</h2>
+            <p class="acertijo">"El año en que nuestra historia comenzó fue en el..."</p>
+            <input type="password" id="input-clave" maxlength="4" placeholder="••••">
+            <button id="btn-acceder">Entrar</button>
+            <p id="error-clave" style="color: #ffb3c6; display: none; margin-top: 15px; font-weight: bold;">Esa no es la
+                fecha correcta, mi amor.</p>
+        </div>
+    </div>
+
+    <audio id="musica" src="cancion.mp3" loop></audio>
+    <div id="pantalla-1" class="pantalla">
+        <div class="tarjeta">
+            <img src="1.gif" alt="Nosotros" class="imagen-pareja">
+            <h2>¡Para lessli Valentin!</h2>
+            <button id="btn-toca">Toca Aquí</button>
+        </div>
+    </div>
+
+    <div id="pantalla-2" class="pantalla">
+        <div id="luciernagas"></div>
+
+        <div class="contenedor-texto">
+            <h1 id="texto-dedicatoria"></h1>
+        </div>
+
+        <div class="contenedor-ramo">
+
+            <div class="tulipanes-grupo">
+                <div class="tulipan-item t-izq-ext">
+                    <div class="tallo">
+                        <div class="hoja h-izq"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-izq-int">
+                    <div class="tallo">
+                        <div class="hoja h-der"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-cen-alto">
+                    <div class="tallo">
+                        <div class="hoja h-izq"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-cen-bajo">
+                    <div class="tallo">
+                        <div class="hoja h-izq"></div>
+                        <div class="hoja h-der"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-der-int">
+                    <div class="tallo">
+                        <div class="hoja h-izq"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-der-ext">
+                    <div class="tallo">
+                        <div class="hoja h-der"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-der-muy-ext">
+                    <div class="tallo">
+                        <div class="hoja h-der"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+
+                <div class="tulipan-item t-extra-1">
+                    <div class="tallo">
+                        <div class="hoja h-izq"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-extra-2">
+                    <div class="tallo">
+                        <div class="hoja h-der"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+                <div class="tulipan-item t-extra-3">
+                    <div class="tallo">
+                        <div class="hoja h-izq"></div>
+                    </div>
+                    <div class="flor">
+                        <div class="petalo p-izq"></div>
+                        <div class="petalo p-cen"></div>
+                        <div class="petalo p-der"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <img src="envoltura.png" alt="Envoltura Dorada" class="imagen-envoltura">
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
