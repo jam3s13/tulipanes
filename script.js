@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Muestra el botón 8 segundos después de haber tocado para ver el ramo
         setTimeout(() => {
             if(btnSorpresa) btnSorpresa.classList.add("mostrar-btn");
-        }, 8000); 
+        }, 20000); 
     });
 
     if(btnSorpresa) {

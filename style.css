@@ -33,7 +33,7 @@ body:not(.not-loaded) {
    2. CONFIGURACIÓN DE PANTALLAS Y FONDOS
    ======================================================= */
 .pantalla {
-    position: absolute;
+    position: fixed;
     top: 0; left: 0;
     width: 100vw; 
     height: 100%; /* Se adapta al body */
@@ -56,6 +56,7 @@ body:not(.not-loaded) {
     background-size: cover; 
     background-position: center bottom; /* Enfoca la parte bonita abajo */
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Fuerza a que no se mueva */
 }
 
 /* Le damos mayor prioridad a la pantalla de clave al inicio */
@@ -120,6 +121,7 @@ body:not(.not-loaded) {
    ======================================================= */
 #input-clave {
     width: 100%;
+    max-width: 250px; /* Evita que crezca demasiado */
     padding: 12px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, 0.7); 
@@ -130,6 +132,7 @@ body:not(.not-loaded) {
     letter-spacing: 6px;
     color: #333;
     outline: none; /* Quita el borde azul molesto al escribir */
+    font-size: 16px;
 }
 
 #btn-acceder {
@@ -214,7 +217,7 @@ body:not(.not-loaded) {
 }
 
 .contenedor-ramo.subir { 
-    bottom: 5vh; 
+    bottom: 20vh; 
     animation: respirar 3s infinite ease-in-out;
 }
 
