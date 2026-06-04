@@ -217,8 +217,8 @@ body:not(.not-loaded) {
 }
 
 .contenedor-ramo.subir { 
-    bottom: 20vh; 
-    animation: respirar 3s infinite ease-in-out;
+    bottom: 16vh; 
+    animation: respirar 4s infinite ease-in-out;
 }
 
 .imagen-envoltura {
